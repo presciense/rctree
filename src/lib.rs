@@ -64,7 +64,16 @@ Disadvantages:
 
 use std::fmt;
 use std::cell::{RefCell, Ref, RefMut};
-use std::rc::{Rc, Weak};
+
+
+#[cfg(not(feature = "arc"))]
+use std::rc::Rc;
+#[cfg(not(feature = "arc"))]
+use std::rc::Weak;
+#[cfg(feature = "arc")]
+use std::sync::{Arc as Rc};
+#[cfg(feature = "arc")]
+use std::sync::Weak;
 
 type Link<T> = Rc<RefCell<NodeData<T>>>;
 type WeakLink<T> = Weak<RefCell<NodeData<T>>>;

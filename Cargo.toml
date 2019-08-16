@@ -11,3 +11,9 @@ description = "A 'DOM-like' tree implemented using reference counting"
 repository = "https://github.com/RazrFalcon/rctree"
 documentation = "https://docs.rs/rctree/"
 readme = "README.md"
+
+[features]
+features = ["rc","arc"]
+rc= []
+arc = []
+default = ["rc"]
